@@ -175,7 +175,7 @@ export const getEvents = async () => {
 
 export const getSelfEvents = async () => {
   const self = storage.getString('userHash');
-  let data = (await firebase.ref(`userpublish/${self}`).once('value')).val();
+  let data = (await firebase.ref(`userposts/${self}`).once('value')).val();
   if (!data) {
     return [];
   }
