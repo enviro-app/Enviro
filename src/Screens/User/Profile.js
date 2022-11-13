@@ -86,9 +86,9 @@ export function ProfileScreen(props) {
   useEffect(() => {
     if (CanEdit && !countries) {
       const get = async () => {
-        let data = await fetch("https://restcountries.com/v2/all");
+        let data = await fetch('https://restcountries.com/v2/all');
         setCountries(await data.json());
-      }
+      };
       get();
     }
   }, [CanEdit]);
@@ -211,30 +211,51 @@ export function ProfileScreen(props) {
               style={{ minWidth: '87%' }}
             />
           </View>
-        ) : <>
-          <Dropdown style={{
-            marginVertical: 8,
-            borderWidth: 0.5,
-            paddingVertical: 4,
-            paddingLeft: 8,
-            borderColor: colors.onBackground,
-            borderRadius: 5
-            
-          }} data={countries} labelField='name' valueField='alpha2Code' value={Country || country}
-          inputSearchStyle={{color: colors.onBackground, backgroundColor: colors.inverseOnSurface,
-          padding: 0, margin: 0, marginBottom: 0}}
-          placeholder='Loading...'
-          
+        ) : (
+          <>
+            <Dropdown
+              style={{
+                marginVertical: 8,
+                borderWidth: 0.5,
+                paddingVertical: 4,
+                paddingLeft: 8,
+                borderColor: colors.onBackground,
+                borderRadius: 5
+              }}
+              data={countries}
+              labelField="name"
+              valueField="alpha2Code"
+              value={Country || country}
+              inputSearchStyle={{
+                color: colors.onBackground,
+                backgroundColor: colors.inverseOnSurface,
+                padding: 0,
+                margin: 0,
+                marginBottom: 0,
+              }}
+              placeholder="Loading..."
+
             renderItem={item => {
-              return <><List.Item style={{ backgroundColor: colors.background }} title={item.name}
-              
+                return (
+                  <>
+                    <List.Item
+                      style={{ backgroundColor: colors.background }}
+                      title={item.name}
+
                 right={() => <Image source={{ uri: `https://flagcdn.com/108x81/${item.alpha2Code.toLowerCase()}.png` }}
-                  style={{ height: 20, width: 30 }} resizeMode="contain" />} />
-                <Divider />
-              </>
-            }}
-            onChange={item => setCountry(item)} search />
-        </>}
+                          style={{ height: 20, width: 30 }}
+                          resizeMode="contain"
+                        />
+                      }
+                    />
+                    <Divider />
+                  </>);
+              }}
+              onChange={(item) => setCountry(item)}
+              search
+            />
+          </>
+        )}
         <View
           style={{
             flexDirection: 'row',
@@ -269,13 +290,12 @@ export function ProfileScreen(props) {
                   await (await getProfileRef()).child('bio').set(bio);
                 }
                 if (Country && Country.alpha2Code != country) {
-                  mmkv.set("countryCode", Country.alpha2Code);
-                  mmkv.set("countryName", Country.name);
-                  mmkv.set("countryData", JSON.stringify(Country));
+                  mmkv.set('countryCode', Country.alpha2Code);
+                  mmkv.set('countryName', Country.name);
+                  mmkv.set('countryData', JSON.stringify(Country));
                 }
               }
               AllowEdit(!CanEdit);
-
             }}
           >
             {CanEdit ? 'Save' : 'Edit Profile'}

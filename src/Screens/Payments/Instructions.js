@@ -39,11 +39,11 @@ export const InstructionsScreen = ({ navigation, route }) => {
 
   const { data } = route.params;
   const instructions =
-    data['instructions'].length != 0 &&
-    data['instructions'][0]['steps'].map((inst) =>
+    data.instructions.length != 0 &&
+    data.instructions[0].steps.map((inst) =>
       Object.entries(inst).map((d) => d[1]),
     );
-  const category = data['payment_method_data']['category'];
+  const category = data.payment_method_data.category;
   // console.log(Math.round(Math.abs(parseInt(data["expiration"]) - Date.now()) / 36e5));
 
   return (
@@ -90,5 +90,6 @@ export const InstructionsScreen = ({ navigation, route }) => {
           })}
         </View>
       )}
-    </View>);
-}
+    </View>
+  );
+};

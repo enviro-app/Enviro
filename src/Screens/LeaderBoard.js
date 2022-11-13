@@ -1,18 +1,7 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Image,
-  FlatList,
-  View,
-} from 'react-native';
+import { ScrollView, StyleSheet, Image, FlatList, View } from 'react-native';
 import database from '@react-native-firebase/database';
 import { useEffect, useState } from 'react';
-import {
-  List,
-  Text,
-  Divider,
-  Avatar,
-} from 'react-native-paper';
+import { List, Text, Divider, Avatar } from 'react-native-paper';
 import { storage } from '../mmkv';
 
 const styles = StyleSheet.create({
@@ -31,13 +20,9 @@ const styles = StyleSheet.create({
 
 async function getTopUsers() {
   let data = Object.entries(
-    (
-      await database()
-        .ref('users')
-        .once('value')
-    ).toJSON(),
+    (await database().ref('users').once('value')).toJSON(),
   );
-  return data.sort((a, b) => (a[1]?.score > b[1]?.score) ? -1 : 1).slice(0, 20)
+  return data.sort((a, b) => (a[1]?.score > b[1]?.score ? -1 : 1)).slice(0, 20);
 }
 
 export function RankingView(props) {

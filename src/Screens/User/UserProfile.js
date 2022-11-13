@@ -29,34 +29,37 @@ export function UserProfileScreen({ route, navigation }) {
   const joined = user?.joined
     ? `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
     : null;
-  return <ScrollView contentContainerStyle={styles.view}>
-    <View style={{ alignItems: 'center', marginBottom: 25 }}>
-      {user?.photo ? (
-        <TouchableHighlight
-          onPress={() =>
-            navigation.navigate('ImageView', {
-              urls: [{ url: user.photo }],
-              showShare: false,
-            })
-          }
-        >
-          <Avatar.Image source={{ uri: user?.photo }} size={150} />
-        </TouchableHighlight>
-      ) : (
-        <Avatar.Text label={user?.name} size={58} />
-      )}
-      <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
-        <Text style={styles.name}>{user?.name}</Text>
-        {user?.verified && <VerifiedIcon style={{ marginLeft: 4 }} />}
+  return (
+    <ScrollView contentContainerStyle={styles.view}>
+      <View style={{ alignItems: 'center', marginBottom: 25 }}>
+        {user?.photo ? (
+          <TouchableHighlight
+            onPress={() =>
+              navigation.navigate('ImageView', {
+                urls: [{ url: user.photo }],
+                showShare: false,
+              })
+            }
+          >
+            <Avatar.Image source={{ uri: user?.photo }} size={150} />
+          </TouchableHighlight>
+        ) : (
+          <Avatar.Text label={user?.name} size={58} />
+        )}
+        <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+          <Text style={styles.name}>{user?.name}</Text>
+          {user?.verified && <VerifiedIcon style={{ marginLeft: 4 }} />}
+        </View>
       </View>
-    </View>
-    {joined && <Chip>Joined on {joined}</Chip>}
-    {user?.bio && (
-      <TextInput
-        mode="outlined"
-        label={'Bio'}
-        editable={false}
-        value={user?.bio}
-      />)}
-  </ScrollView>;
+      {joined && <Chip>Joined on {joined}</Chip>}
+      {user?.bio && (
+        <TextInput
+          mode="outlined"
+          label={'Bio'}
+          editable={false}
+          value={user?.bio}
+        />
+      )}
+    </ScrollView>
+  );
 }

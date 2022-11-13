@@ -383,12 +383,7 @@ export function HomeScreen({ navigation }) {
         {isYtVideo && (
           <Accordion
             title={data.video.title}
-            expanded={isExpand}
-            onPress={() => {
-              setExpand(!isExpand);
-              //            if (!isExpand) {
-              //              setPlay(false);}
-            }}
+            expanded
             containerStyle={{
               borderRadius: isExpand ? 0 : 8,
               marginVertical: 10,

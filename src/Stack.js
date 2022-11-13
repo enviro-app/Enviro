@@ -2,11 +2,7 @@ import { HomeScreen } from './Screens/Home';
 import { ProfileScreen } from './Screens/User/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {
-  Appbar,
-  IconButton,
-  useTheme,
-} from 'react-native-paper';
+import { Appbar, IconButton, useTheme } from 'react-native-paper';
 import { WebViewScreen } from './webview';
 import { StyleSheet, View } from 'react-native';
 import { QuizView } from './Screens/Game/QuizPage';
@@ -292,8 +288,7 @@ export function MainStack({ user }) {
           name="Explore"
           component={ExploreScreen}
           options={{ headerShown: true }}
-        />*/
-        }
+        />*/}
         <Stack.Screen
           name="Timeline"
           component={TimeLine}

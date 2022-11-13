@@ -8,10 +8,8 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-import AutoHeightImage from 'react-native-auto-height-image';
 import { Button, Chip, Divider, Text, useTheme } from 'react-native-paper';
 import { getUser } from '../../util';
-import { API_URL } from '../../_config';
 
 const styles = StyleSheet.create({
   view: {
@@ -103,7 +101,8 @@ export function EventView({ route, navigation }) {
                   }}
                   resizeMode="cover"
                 />
-              </Pressable>);
+              </Pressable>
+            );
           }}
         />
       )}
@@ -143,7 +142,7 @@ export function EventView({ route, navigation }) {
           style={{ marginTop: 12 }}
           onPress={() =>
             navigation.navigate('Payment', {
-              title: data['title'],
+              title: data.title,
               thumb: images?.length > 0 ? images[0] : null,
             })
           }
