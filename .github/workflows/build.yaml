@@ -52,7 +52,7 @@ jobs:
         run: |
           yarn install
           echo "$GOOGLE_SERVICES" >> android/app/google-services.json
-          echo "$CONFIG" >> src/_config.js
+          rm src/_config.js && echo "$CONFIG" >> src/_config.js
       
       - name: Build
         run: cd android && chmod u+x gradlew && ./gradlew assembleRelease && cd ..
