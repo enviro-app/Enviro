@@ -5,7 +5,7 @@ on:
   push:
     paths-ignore:
       - '*md'
-      - '.github/'
+      - '.github/*'
 
 env:
   BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
           echo "$CONFIG" >> src/_config.js
       
       - name: Build
-        run: cd android && ./gradlew assembleRelease && cd ..
+        run: cd android && chmod u+x gradlew && ./gradlew assembleRelease && cd ..
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
