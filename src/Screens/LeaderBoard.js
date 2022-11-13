@@ -30,15 +30,14 @@ const styles = StyleSheet.create({
 });
 
 async function getTopUsers() {
-  return Object.entries(
+  let data = Object.entries(
     (
       await database()
         .ref('users')
-        .orderByChild('score')
-        .limitToFirst(25)
         .once('value')
     ).toJSON(),
   );
+  return data.sort((a, b) => (a[1]?.score > b[1]?.score) ? -1 : 1).slice(0, 20)
 }
 
 export function RankingView(props) {
