@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/chatBG.webp",
+      "sha1": "00aaffdaf66285bd7938dd33fd9fe37a3f0c4acb"
+    },
+    {
+      "path": "assets/fonts/Karma-Bold.ttf",
+      "sha1": "0ccc94d445ee1a55ab4d2a08ebd277bf4ebc02b2"
+    },
+    {
+      "path": "assets/fonts/Roboto-Light.ttf",
+      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+    },
+    {
+      "path": "assets/icon.webp",
+      "sha1": "4f4c24ef4933448edc7a5acd1842428c5c593d87"
+    },
+    {
+      "path": "assets/quiz.webp",
+      "sha1": "8871e57f052ea4535fe7bdc1504a7df37e140abe"
+    },
+    {
+      "path": "assets/start_tree.json",
+      "sha1": "650dcde74d91561e34c9e9336ef43fd47c7a1f1f"
+    },
+    {
+      "path": "assets/fonts/Karma-Bold.ttf",
+      "sha1": "0ccc94d445ee1a55ab4d2a08ebd277bf4ebc02b2"
+    },
+    {
+      "path": "assets/fonts/Roboto-Light.ttf",
+      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+    }
+  ]
+}

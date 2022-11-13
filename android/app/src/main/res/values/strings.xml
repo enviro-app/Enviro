@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Enviro</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">5BYevQnfD-RYgHDM8NSzbMlB0FhVHP0Web4hI</string>
+</resources>
