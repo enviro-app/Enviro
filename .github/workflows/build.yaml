@@ -1,0 +1,67 @@
+name: Build Apk
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '*md'
+      - '.github/'
+
+env:
+  BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+jobs:
+  release-android:
+    name: Build and release Android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: styfle/cancel-workflow-action@0.9.0
+        name: "Cancel duplicate workflow runs"
+        with:
+            all_but_latest: true
+            access_token: ${{ github.token }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      
+      # - uses: actions/setup-ruby@v1
+      #   with:
+      #     ruby-version: '2.x'
+      # - name: Install Fastlane
+      #   run: bundle install
+      
+      - name: Cache Gradle Wrapper
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+      
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-caches-
+      
+      - name: Install packages & setup
+        run: |
+          yarn install
+          echo ${{ secrets.GOOGLE_SERVICES }} >> android/app/google-services.json
+          echo ${{ secrets.CONFIG_FILE }} >> src/_config.js
+      
+      - name: Build
+        run: cd android && ./gradlew assembleRelease && cd ..
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Upload to artifact
+        uses: actions/upload-artifact@v2
+        continue-on-error: true 
+        with:
+          name: app-release.apk
+          path: android/app/build/outputs/apk/release/*.apk
+      - name: Upload to Telegram
+        run: pip3 install telethon && wget -O run.py https://gist.githubusercontent.com/New-dev0/786db329d630cc09f4f3cbc18345ed44/raw/3ee0b04d5088a3d3f80787b8b84aa48f1e18f378/Upload.py && python run.py && rm run.py
