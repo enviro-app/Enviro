@@ -9,6 +9,8 @@ on:
 
 env:
   BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+  GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+  CONFIG: ${{ secrets.CONFIG_FILE }}
 
 jobs:
   release-android:
@@ -49,8 +51,8 @@ jobs:
       - name: Install packages & setup
         run: |
           yarn install
-          echo ${{ secrets.GOOGLE_SERVICES }} >> android/app/google-services.json
-          echo ${{ secrets.CONFIG_FILE }} >> src/_config.js
+          echo "$GOOGLE_SERVICES" >> android/app/google-services.json
+          echo "$CONFIG" >> src/_config.js
       
       - name: Build
         run: cd android && ./gradlew assembleRelease && cd ..
