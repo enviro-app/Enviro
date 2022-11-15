@@ -83,7 +83,7 @@ app.post('/call', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.use('/*', (req, res) => {
-  res.redirect('https://google.com');
+  res.redirect('https://github.com/Enviro-App/Enviro');
 });
 
 app.listen(PORT, () => {

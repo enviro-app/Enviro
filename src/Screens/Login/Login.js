@@ -211,6 +211,7 @@ export function LoginStartScreen({ navigation }) {
       </ScrollView>
       <ScrollView
         style={{ paddingVertical: 10, flexGrow: 1, paddingHorizontal: 20 }}
+        contentContainerStyle={{ paddingBottom: 150 }}
       >
         <Text
           style={[

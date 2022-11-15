@@ -37,7 +37,6 @@ import { SearchPage } from './Screens/Search';
 import { ChoosePreference } from './Screens/Login/Preferences';
 import { RankingView } from './Screens/LeaderBoard';
 import { GamePage } from './Screens/Game/GamePage';
-import { Coin } from './Components/Misc';
 
 import { EventView } from './Screens/Events/EventView';
 import { InstructionsScreen } from './Screens/Payments/Instructions';
@@ -83,7 +82,6 @@ export const CustomHeader = ({
       />
       {check && (
         <>
-          <Appbar.Action icon={<Coin point={20} />} />
           <Appbar.Action
             icon="magnify"
             iconColor={colors.inverseSurface}

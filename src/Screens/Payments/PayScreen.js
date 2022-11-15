@@ -41,8 +41,6 @@ const styles = StyleSheet.create({
   },
 });
 
-storage.delete('paymentMethods');
-
 export function PayScreen({ navigation, route }) {
   const { title, thumb } = route.params;
   const { colors } = useTheme();
@@ -54,7 +52,8 @@ export function PayScreen({ navigation, route }) {
   const [currency, setCurrency] = useState(0);
 
   const [cardData, setCardData] = useState({});
-
+  
+//  const [log, slog] = useState();
   const [methods, setMethods] = useState(
     JSON.parse(storage.getString('paymentMethods') || '[]'),
   );
@@ -442,6 +441,9 @@ export function PayScreen({ navigation, route }) {
       >
         Proceed
       </Button>
+      {/* <Text selectable>
+        {JSON.stringify(log, null, 1)}
+      </Text> */}
     </ScrollView>
   );
 }

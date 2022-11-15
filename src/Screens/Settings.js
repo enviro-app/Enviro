@@ -1,7 +1,4 @@
 import {
-  DevSettings,
-  Platform,
-  SectionList,
   View,
   ScrollView,
   Image,
@@ -31,7 +28,7 @@ import { API_URL } from '../_config';
 import { _auth } from '../App';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function LogOut(navigation) {
+function LogOut() {
   _auth.signOut();
   storage.clearAll();
   RNRestart.Restart();
@@ -181,7 +178,8 @@ export function Settings({ navigation }, props) {
             )}
             <Pressable
               onPress={() => {
-                storage.delete('chatBG'), setBg(null);
+                storage.delete('chatBG');
+                setBg(null);
               }}
             >
               <Image

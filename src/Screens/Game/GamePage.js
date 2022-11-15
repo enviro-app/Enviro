@@ -7,11 +7,8 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
-import { Text, Card, Modal, useTheme, Appbar } from 'react-native-paper';
+import { Text, Card, useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import App from '../../App';
-import { Coin } from '../../Components/Misc';
-
 import { setOrGetScore } from '../../util';
 
 const styles = StyleSheet.create({
